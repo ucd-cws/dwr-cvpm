@@ -41,7 +41,5 @@ configure.mk:
 
 # Some convience functions for testing and repreoducing
 clean:
-	rm -rf configure.mk shp geojson
+	rm -rf configure.mk shp *.geojson
 
-clean-all: clean
-	rm src/dau_v2_105.*

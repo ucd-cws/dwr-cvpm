@@ -4,9 +4,11 @@
     <SrcDataSource relativeToVRT="1">CVPM_1_6_08.shp</SrcDataSource>
     <SrcLayer>CVPM_1_6_08</SrcLayer>
     <Field name="cvpm" src="CVPM" type="STRING"/>
+    <!-- Don't know what these are for so leaving out for now
     <Field name="import" src="Import" type="INTEGER"/>
     <Field name="export" src="Export" type="INTEGER"/>
     <Field name="trade" src="Trade" type="INTEGER"/>
+    -->
   </OGRVRTLayer>
 <TargetSRS>epsg:3310</TargetSRS>
 </OGRVRTWarpedLayer>
