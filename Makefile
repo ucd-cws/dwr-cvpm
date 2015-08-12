@@ -7,28 +7,28 @@ schema:=public
 DEFAULT: cvpm.geojson shp
 
 # Converting to WGS84 is a more accepted GEOJSON format.
-cvpm.geojson: src/cvpm.vrt src/CVPM_1_6_08.shp
+cvpm.geojson: src/cvpm.vrt src/CVPM_regions.shp
 	ogr2ogr -f GEOJSON  -t_srs WGS84 $@ $<
 
 # Here's an Example of materializing that VRT file, for example to
 # upload to Google Maps.
-shp: src/cvpm.vrt src/CVPM_1_6_08.shp
+shp: src/cvpm.vrt src/CVPM_regions.shp
 	ogr2ogr $@ $<
 
 # While we may store the original data in the GITHUB repository, we
 # also want to show how we got the data.
 # However, I don't know where we got this
-src/CVPM_1_6_08.shp:zip:=src/CVPM_1_6_08.zip
-src/CVPM_1_6_08.shp:url:=
-src/CVPM_1_6_08.shp:
-	[[ -f ${zip} ]] || curl ${url} > ${zip}
-	unzip -d src -u ${zip}
-	rm ${zip}
+#src/CVPM_1_6_08.shp:zip:=src/CVPM_1_6_08.zip
+#src/CVPM_1_6_08.shp:url:=
+#src/CVPM_1_6_08.shp:
+#	[[ -f ${zip} ]] || curl ${url} > ${zip}
+#	unzip -d src -u ${zip}
+#	rm ${zip}
 
 # Additionally, we may want to show alternative import strateigies.
 # This rule will create a PostGIS version in ${schema}
 .PHONY: postgis
-postgis: src/cvpm.vrt src/CVPM_1_6_08.shp
+postgis: src/cvpm.vrt src/CVPM_regions.shp
 	${OGR} src/cvpm.vrt
 
 # In order to use our PostGIS import, we include some standard
